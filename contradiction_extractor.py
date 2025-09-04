@@ -151,4 +151,5 @@ class FeatureExtractor:
                 adj_compare, verb_compare, num_compare, no_common_words, similarity]
         for val in name_entity_features:
             feature_vector.append(val)
+        print("done")
         return feature_vector
