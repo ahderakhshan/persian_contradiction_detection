@@ -13,9 +13,9 @@ farstail_test = pd.read_csv("./dataset/farstail_test.csv")
 farstail_train["label"] = farstail_train["label"].apply(lambda x: to_num[x])
 farstail_test["label"] = farstail_test["label"].apply(lambda x: to_num[x])
 
-train_premise, train_hypothesis, train_label = farstail_train["premise"][:10],\
-                                                farstail_train["hypothesis"][:10], farstail_train["label"][:10]
-test_premise, test_hypothesis, test_label = farstail_test["premise"][:10], farstail_test["hypothesis"][:10], farstail_test["label"][:10]
+train_premise, train_hypothesis, train_label = farstail_train["premise"],\
+                                                farstail_train["hypothesis"], farstail_train["label"]
+test_premise, test_hypothesis, test_label = farstail_test["premise"], farstail_test["hypothesis"], farstail_test["label"]
 
 train_features = []
 for premise, hypothesis in tqdm(zip(train_premise, train_hypothesis)):
