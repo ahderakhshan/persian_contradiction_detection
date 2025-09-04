@@ -4,6 +4,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import MinMaxScaler
 import pickle
+from tqdm import tqdm
 
 
 to_num = {"e":0, "n":0, "c":1}
@@ -17,7 +18,7 @@ train_premise, train_hypothesis, train_label = farstail_train["premise"][:10],\
 test_premise, test_hypothesis, test_label = farstail_test["premise"][:10], farstail_test["hypothesis"][:10], farstail_test["label"][:10]
 
 train_features = []
-for premise, hypothesis in zip(train_premise, train_hypothesis):
+for premise, hypothesis in tqdm(zip(train_premise, train_hypothesis)):
     feature_extractor = FeatureExtractor(premise, hypothesis)
     train_features.append(feature_extractor.feature_construction())
 
@@ -31,7 +32,7 @@ with open("./scalar.pkl", "wb") as f:
     pickle.dump(scaler, f)
 
 test_features = []
-for premise, hypothesis in zip(test_premise, test_hypothesis):
+for premise, hypothesis in tqdm(zip(test_premise, test_hypothesis)):
     feature_extractor = FeatureExtractor(premise, hypothesis)
     test_features.append(feature_extractor.feature_construction())
 

@@ -47,6 +47,7 @@ class FeatureExtractor:
             response = requests.post(self.ner_url, json=data)
             response = response.json()
         except:
+            print("fail in NER")
             return [0 for _ in range(10)]
         result = {}
         for entity_type, entities_info in response.items():
